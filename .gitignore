@@ -1,0 +1,22 @@
+# Dataset: download from NIH/NLM (see README); only the samples/ folder is tracked
+cell_images/
+data/cell_images/
+*.zip
+
+# Saved models
+Models/
+*.keras
+*.h5
+*.sav
+
+# Python and Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+~$*

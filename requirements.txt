@@ -1,0 +1,23 @@
+# Python 3.10. The notebooks were run on Google Colab in late 2023.
+#
+# Versions printed in the notebook outputs: numpy, matplotlib, scikit-image,
+# scipy, pillow, imageio, seaborn-image. The TensorFlow version is inferred
+# from notebook 06's error trace, which matches the Keras 2.12.0 source line
+# for line. The rest are chosen to work with those. On an Apple Silicon Mac,
+# replace tensorflow with tensorflow-macos==2.12.0. The code needs Keras 2 (TensorFlow 2.15 or
+# older) and pandas 1.x (notebook 01 uses DataFrame.append).
+tensorflow==2.12.0
+numpy==1.23.5
+pandas==1.5.3
+scipy==1.11.3
+scikit-learn==1.2.2
+scikit-image==0.19.3
+opencv-python==4.8.0.76
+imageio==2.31.6
+pillow==9.4.0
+matplotlib==3.7.1
+seaborn==0.12.2
+seaborn-image==0.7.0
+tqdm==4.66.1
+# keras.utils.plot_model also needs the Graphviz program installed.
+pydot==1.4.2
