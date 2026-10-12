@@ -15,7 +15,7 @@ The best model uses EfficientNetB7, pretrained on ImageNet and frozen, with a sm
 - Accuracy 0.96 and ROC AUC 0.99
 - At the threshold chosen from the ROC curve (0.61), it caught 1,253 of 1,300 infected cells (96.4%) and correctly cleared 1,235 of 1,300 uninfected cells (95.0%)
 
-The training and test sets share no images, but the split was made by cell, so every test patient also has other cells in the training set. These numbers are therefore likely higher than the model would score on new patients. See [Limitations](#limitations).
+The training and test sets share no images, but the split was made by cell, so every test patient also has other cells in the training set. These numbers may therefore be higher than the model would score on new patients; see [Limitations](#limitations).
 
 These figures count infected cells as positive, as intended. The notebooks themselves count the classes the other way round; see [the label-order note](#a-label-order-issue-found-in-review).
 
@@ -90,7 +90,7 @@ The fix, not applied to these notebooks, is one argument in each loader call: `c
 
 ## Limitations
 
-- **New cells, not new patients.** The training and test sets share no images. However, the split was made by cell rather than by patient, so every patient in the test set (identified by the patient ID in each file name, for example `C100P61ThinF`, as in NLM's patient-to-cell mapping) also has other cells in the training set. The test scores show performance on new cells from patients the model has already seen; performance on new patients was not measured and is likely lower.
+- **New cells, not new patients.** The training and test sets share no images. However, the split was made by cell rather than by patient, so every patient in the test set (identified by the patient ID in each file name, for example `C100P61ThinF`, as in NLM's patient-to-cell mapping) also has other cells in the training set. Cells from one patient share that slide's staining, and patients differ widely in their mix of infected and uninfected cells (50 contributed only uninfected cells), so a model can partly learn to recognize a patient's slide. The dataset's authors reported higher accuracy for a cell-level evaluation (0.986) than for patient-level cross-validation (0.959) with the same model (Rajaraman et al. 2018, cited under [Data](#data)). Performance on new patients was not measured in this project.
 - **Thresholds and model choice were based on test results.** The ROC thresholds and the choice of final model were made from the test set rather than the validation set, so the test figures are somewhat optimistic.
 - **No saved weights for the best model.** Saving EfficientNetB7 failed at the end of its run, so reproducing it means retraining (15 epochs, roughly 8 hours on the Colab runtime used).
 - **One data source.** All images come from one hospital's slides. Performance on slides from other labs, stains or microscopes is untested.
