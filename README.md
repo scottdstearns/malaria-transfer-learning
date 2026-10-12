@@ -135,6 +135,8 @@ requirements.txt      pinned package versions
 
 The notebooks were originally named `EDA_01` to `EDA_06`. One leftover test cell with no effect on the analysis was removed from notebook 06, and the Google Drive folder in the data paths was renamed to `My Drive/Malaria/`. This README, `requirements.txt` (versions reconstructed from the notebook outputs), `data/prepare_data.py`, `data/test_split.csv` and the `samples/` folder were added in 2026 when the project was published.
 
+Preparing this repository in 2026 (the README, the data-split script, and the review that found the label-order issue) was done with Claude, Anthropic's AI assistant.
+
 ## License
 
 The notebooks and code are released under the [MIT License](LICENSE). The final report is © 2023 Scott Stearns. The sample images in `samples/` are from the NIH/NLM dataset described in [Data](#data).
