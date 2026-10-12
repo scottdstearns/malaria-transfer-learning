@@ -15,7 +15,7 @@ The best model uses EfficientNetB7, pretrained on ImageNet and frozen, with a sm
 - Accuracy 0.96 and ROC AUC 0.99
 - At the threshold chosen from the ROC curve (0.61), it caught 1,253 of 1,300 infected cells (96.4%) and correctly cleared 1,235 of 1,300 uninfected cells (95.0%)
 
-These numbers come from a cell-level split in which the same patients appear in both training and test data, so they are likely higher than the model would score on new patients. See [Limitations](#limitations).
+The training and test sets share no images, but the split was made by cell, so every test patient also has other cells in the training set. These numbers are therefore likely higher than the model would score on new patients. See [Limitations](#limitations).
 
 These figures count infected cells as positive, as intended. The notebooks themselves count the classes the other way round; see [the label-order note](#a-label-order-issue-found-in-review).
 
