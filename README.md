@@ -4,6 +4,8 @@ Classifying single red blood cell images as **parasitized** or **uninfected** wi
 
 This is a research project completed in fall 2023. The notebooks keep their saved outputs from the original runs.
 
+**Final report:** the full write-up of the data, methods and results is in [report/final_report.pdf](report/final_report.pdf) (21 pages).
+
 ![Uninfected and parasitized cells from the training set](figures/sample_cells.png)
 
 *Sample cells from the training set (notebook 01). Parasites usually show as dark purple spots, but not every parasitized cell has a visible spot.*
