@@ -114,6 +114,13 @@ The fix, not applied to these notebooks, is one argument in each loader call: `c
 
 Expect small differences from the saved results: training is not bit-for-bit repeatable.
 
+## Future work
+
+- **Patient-level evaluation.** Reproduce the evaluation design used by the dataset's authors (Rajaraman et al. 2018): five-fold cross-validation with whole patients, not individual cells, assigned to each fold, so every test patient is new to the model. This would measure how much of the current score depends on recognizing a patient's slide.
+- **Cleaner evaluation.** Set the class order explicitly so parasitized is the positive class, confirm it with known infected cells, and choose the operating threshold from validation data only, reporting the test result once.
+- **Preprocessing with transfer learning.** Test the gamma correction and contrast enhancement from notebook 03 with the EfficientNetB7 model, and try stain normalization, which the dataset's authors suggest for the color differences between patients' slides.
+- **Fine-tuning.** Unfreeze the top layers of EfficientNetB7 rather than training only the classifier on top.
+
 ## Repository contents
 
 ```
