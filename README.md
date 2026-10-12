@@ -31,7 +31,7 @@ The images come from the NIH/NLM malaria dataset: 27,558 single-cell images (13,
    python data/prepare_data.py --source cell_images --dest data/cell_images
    ```
 
-The project used a fixed split of 12,479 images per class for training and 1,300 per class for testing. [`data/test_split.csv`](data/test_split.csv) lists the 2,600 test images; every other image is training data. Inside the notebooks, 25% of the training folder is held out for validation (seed 42), giving 18,719 training and 6,239 validation images.
+The project used a fixed split of 12,479 images per class for training and 1,300 per class for testing. [`data/test_split.csv`](data/test_split.csv) lists the 2,600 test images; every other image is training data. The training and test sets share no images. Inside the notebooks, 25% of the training folder is held out for validation (seed 42), giving 18,719 training and 6,239 validation images.
 
 Image sizes vary (each side is between 40 and 394 pixels), so every model resizes images to 224 x 224.
 
@@ -90,8 +90,8 @@ The fix, not applied to these notebooks, is one argument in each loader call: `c
 
 ## Limitations
 
-- **Same patients in training and test data.** The split is by cell, not by patient. Every patient ID in the test file names (for example `C100P61ThinF`, as used in NLM's published patient-to-cell mapping) also appears in the training set. The test scores measure performance on new cells from patients the model has already seen.
-- **Thresholds and model choice used the test set.** ROC thresholds and the final model were picked on the test set rather than the validation set, so the test figures are optimistic.
+- **New cells, not new patients.** The training and test sets share no images. However, the split was made by cell rather than by patient, so every patient in the test set (identified by the patient ID in each file name, for example `C100P61ThinF`, as in NLM's patient-to-cell mapping) also has other cells in the training set. The test scores show performance on new cells from patients the model has already seen; performance on new patients was not measured and is likely lower.
+- **Thresholds and model choice were based on test results.** The ROC thresholds and the choice of final model were made from the test set rather than the validation set, so the test figures are somewhat optimistic.
 - **No saved weights for the best model.** Saving EfficientNetB7 failed at the end of its run, so reproducing it means retraining (15 epochs, roughly 8 hours on the Colab runtime used).
 - **One data source.** All images come from one hospital's slides. Performance on slides from other labs, stains or microscopes is untested.
 - **Research prototype.** This is a research project, not a diagnostic tool.
